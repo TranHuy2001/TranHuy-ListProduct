@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="showList()">List</button>
+<button onclick="showFormAdd()">Add</button>
+
+<div id = "disp"></div>
+
+<script>
+    let listProduct = ['Wakamo' , 'Noa', 'Aru'];
+    showList()
+    function showList() {
+        let str = '<h1>Danh sách sản phẩm</h1>'
+        str+=`<p>Số lượng sản phẩm: ${listProduct.length}</p>`
+        for (let i = 0; i < listProduct.length; i++) {
+            str += `<h1>${listProduct[i]}<button onclick="edit(${i})">Edit</button></h1>`
+        }
+        document.getElementById('disp').innerHTML = str;
+    }
+
+
+    function showFormAdd() {
+        let str = '<input id = "inp"> <button onclick="add()">Create</button>'
+        document.getElementById('disp').innerHTML = str;
+    }
+
+    function add() {
+        listProduct.push(document.getElementById('inp').value);
+        showList()
+    }
+    function edit(index) {
+        let str = `<input id = "inp"> <button onclick="save(${index})">Save</button>`
+        document.getElementById('disp').innerHTML = str;
+    }
+
+    function save(index) {
+        listProduct[index] = document.getElementById('inp').value;
+        showList()
+    }
+</script>
+</body>
+</html>
